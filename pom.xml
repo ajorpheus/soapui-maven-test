@@ -1,0 +1,43 @@
+<project>
+	<groupId>com.ash</groupId>
+	<artifactId>soapui-maven-test</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+	<modelVersion>4.0.0</modelVersion>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>eviwarePluginRepository</id>
+			<url>http://www.eviware.com/repository/maven2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>eviware</groupId>
+				<artifactId>maven-soapui-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<projectFile>${project.basedir}/src/test/resources/soapui-maven-test-soapui-project.xml</projectFile>
+					<outputFolder>${project.basedir}/src/test/resources/soapui/output</outputFolder>
+					<junitReport>true</junitReport>
+					<projectProperties>
+						<projectProperty>server=${server}</projectProperty>
+					</projectProperties>
+
+				</configuration>
+				<executions>
+					<execution>
+						<id>soapUI</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
